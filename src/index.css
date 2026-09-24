@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply box-border;
+    }
+
+    html {
+        @apply scroll-smooth;
+    }
+
+    body {
+        @apply font-sans text-white antialiased;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        background-attachment: fixed;
+        min-height: 100vh;
+        direction: rtl;
+    }
+
+    /* اسکرول‌بار شیشه‌ای */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(255, 107, 53, 0.5);
+        border-radius: 10px;
+        transition: all 0.3s;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 107, 53, 0.8);
+    }
+
+    /* انتخاب متن */
+    ::selection {
+        background: rgba(255, 107, 53, 0.4);
+        color: #fff;
+    }
+}
+
+@layer components {
+
+    /* کارت شیشه‌ای */
+    .glass-card {
+        @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl shadow-2xl;
+    }
+
+    .glass-card-hover {
+        @apply glass-card transition-all duration-300 hover:bg-white/15 hover:border-white/30 hover:shadow-primary-500/20 hover:shadow-2xl;
+    }
+
+    /* دکمه اصلی */
+    .btn-primary {
+        @apply bg-gradient-to-r from-primary-500 to-primary-400 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/50 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    /* دکمه ثانویه */
+    .btn-secondary {
+        @apply bg-gradient-to-r from-secondary-500 to-secondary-400 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-secondary-500/50 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    /* دکمه شیشه‌ای */
+    .btn-glass {
+        @apply bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 hover:bg-white/20 hover:border-white/30 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    /* ورودی شیشه‌ای */
+    .input-glass {
+        @apply w-full bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-4 py-3 text-white placeholder-white/50 outline-none transition-all duration-300 focus:bg-white/15 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/50;
+    }
+
+    /* برچسب */
+    .label-glass {
+        @apply block text-white/80 font-semibold mb-2 text-sm;
+    }
+
+    /* لینک */
+    .link-primary {
+        @apply text-primary-400 hover:text-primary-300 transition-colors duration-200 font-semibold;
+    }
+
+    /* تیتر گرادیانتی */
+    .text-gradient {
+        @apply bg-gradient-to-r from-primary-400 via-primary-300 to-secondary-400 bg-clip-text text-transparent;
+    }
+
+    /* کارت با درخشش */
+    .glow-card {
+        @apply relative overflow-hidden;
+    }
+
+    .glow-card::before {
+        content: '';
+        @apply absolute -inset-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-2xl blur-xl opacity-30;
+    }
+}
+
+@layer utilities {
+
+    /* انیمیشن‌ها */
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-gradient {
+        background-size: 200% 200%;
+        animation: gradient 8s ease infinite;
+    }
+
+    /* شیشه‌ی مات */
+    .glass-blur {
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+    }
+
+    /* سایه‌ی رنگی */
+    .shadow-glow-primary {
+        box-shadow: 0 0 30px rgba(255, 107, 53, 0.4);
+    }
+
+    .shadow-glow-secondary {
+        box-shadow: 0 0 30px rgba(168, 85, 247, 0.4);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes gradient {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* حذف فلش‌های input number */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
