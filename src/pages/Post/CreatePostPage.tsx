@@ -42,7 +42,7 @@ const CreatePostPage = () => {
     enabled: !!form.category,
   });
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending: isLoading } = useMutation({
     mutationFn: createPost,
     onSuccess: () => {
       toast.success("آگهی با موفقیت ثبت شد");

@@ -14,7 +14,7 @@ interface SendOtpProps {
 const SendOtp = ({ setStep, setMobile }: SendOtpProps) => {
   const [mobile, setMobileLocal] = useState("");
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate, isPending: isLoading } = useMutation({
     mutationFn: sendOtp,
     onSuccess: () => {
       toast.success("کد تایید ارسال شد");
